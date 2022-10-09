@@ -130,8 +130,7 @@ class TVTrainConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 else:
                     errors["base"] = "cannot_connect"
             else:
-                if train_time:
-                    if bool(dt_util.parse_time(train_time) is None):
+                if train_time and bool(dt_util.parse_time(train_time) is None):
                         errors["base"] = "invalid_time"
                 if not errors:
                     unique_id = create_unique_id(

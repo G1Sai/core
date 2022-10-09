@@ -508,8 +508,7 @@ class RfxtrxEntity(RestoreEntity):
 
     def _event_applies(self, event: rfxtrxmod.RFXtrxEvent, device_id: DeviceTuple):
         """Check if event applies to me."""
-        if isinstance(event, rfxtrxmod.ControlEvent):
-            if (
+        if isinstance(event, rfxtrxmod.ControlEvent) and (
                 "Command" in event.values
                 and event.values["Command"] in COMMAND_GROUP_LIST
             ):

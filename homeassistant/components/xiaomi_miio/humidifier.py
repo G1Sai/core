@@ -355,8 +355,7 @@ class XiaomiAirHumidifierMiot(XiaomiAirHumidifier):
             return
 
         _LOGGER.debug("Setting the operation mode to: %s", mode)
-        if self._state:
-            if await self._try_command(
+        if self._state and await self._try_command(
                 "Setting operation mode of the miio device failed.",
                 self._device.set_mode,
                 self.REVERSE_MODE_MAPPING[mode],
@@ -383,8 +382,7 @@ class XiaomiAirHumidifierMjjsq(XiaomiAirHumidifier):
     @property
     def target_humidity(self):
         """Return the target humidity."""
-        if self._state:
-            if (
+        if self._state and (
                 AirhumidifierMjjsqOperationMode(self._mode)
                 == AirhumidifierMjjsqOperationMode.Humidity
             ):
@@ -427,8 +425,7 @@ class XiaomiAirHumidifierMjjsq(XiaomiAirHumidifier):
             return
 
         _LOGGER.debug("Setting the operation mode to: %s", mode)
-        if self._state:
-            if await self._try_command(
+        if self._state and await self._try_command(
                 "Setting operation mode of the miio device failed.",
                 self._device.set_mode,
                 self.MODE_MAPPING[mode],

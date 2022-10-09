@@ -683,8 +683,7 @@ class XiaomiAirFresh(XiaomiGenericAirPurifier):
         speed_mode = math.ceil(
             percentage_to_ranged_value((1, self._speed_count), percentage)
         )
-        if speed_mode:
-            if await self._try_command(
+        if speed_mode and await self._try_command(
                 "Setting operation mode of the miio device failed.",
                 self._device.set_mode,
                 AirfreshOperationMode(self.SPEED_MODE_MAPPING[speed_mode]),

@@ -314,8 +314,7 @@ def build_item_response(  # noqa: C901
             title = artist.get("name")
             image = fetch_image_url(artist)
             items = media.get("items", [])
-    elif media_content_type == MEDIA_TYPE_SHOW:
-        if (media := spotify.show_episodes(media_content_id, limit=BROWSE_LIMIT)) and (
+    elif media_content_type == MEDIA_TYPE_SHOW and (media := spotify.show_episodes(media_content_id, limit=BROWSE_LIMIT)) and (
             show := spotify.show(media_content_id)
         ):
             title = show.get("name")

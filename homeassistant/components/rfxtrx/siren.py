@@ -35,8 +35,7 @@ def supported(event: rfxtrxmod.RFXtrxEvent) -> bool:
 
     if isinstance(device, rfxtrxmod.SecurityDevice) and isinstance(
         event, rfxtrxmod.SensorEvent
-    ):
-        if event.values["Sensor Status"] in SECURITY_PANIC_ALL:
+    ) and event.values["Sensor Status"] in SECURITY_PANIC_ALL:
             return True
 
     return False
@@ -75,8 +74,7 @@ async def async_setup_entry(
 
         if isinstance(device, rfxtrxmod.SecurityDevice) and isinstance(
             event, rfxtrxmod.SensorEvent
-        ):
-            if event.values["Sensor Status"] in SECURITY_PANIC_ALL:
+        ) and event.values["Sensor Status"] in SECURITY_PANIC_ALL:
                 return [
                     RfxtrxSecurityPanic(
                         event.device,

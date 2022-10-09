@@ -884,8 +884,7 @@ class SonosSpeaker:
             group = self.sonos_group.copy()
 
         for speaker in speakers:
-            if speaker.soco.uid != self.soco.uid:
-                if speaker not in group:
+            if speaker.soco.uid != self.soco.uid and speaker not in group:
                     speaker.soco.join(self.soco)
                     speaker.coordinator = self
                     group.append(speaker)

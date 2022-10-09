@@ -113,8 +113,7 @@ class SchemaCommonFlowHandler:
         ):
             # Add advanced field default if not set
             for key in data_schema.schema.keys():
-                if isinstance(key, (vol.Optional, vol.Required)):
-                    if (
+                if isinstance(key, (vol.Optional, vol.Required)) and (
                         key.description
                         and key.description.get("advanced")
                         and key.default is not vol.UNDEFINED
